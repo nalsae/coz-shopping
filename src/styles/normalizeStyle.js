@@ -33,7 +33,7 @@ export const NormalizeStyle = createGlobalStyle/*css*/ `
   body {
     line-height: auto;
   }
-  menu, ol, ul {
+  menu, ol, ul, li {
     list-style: none;
   }
   blockquote, q {
