@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ReactComponent as Hamburger } from 'assets/hamburgerIcon.svg';
+import { ReactComponent as Hamburger } from 'assets/hamburger.svg';
 
 function DropdownButton({ setIsOpen }) {
   const handleClick = () => setIsOpen((prevValue) => !prevValue);

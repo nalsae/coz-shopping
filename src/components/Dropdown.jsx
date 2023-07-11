@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import productsListIcon from 'assets/productsListIcon.svg';
-import bookmarkIcon from 'assets/bookmarkIcon.svg';
+import productsList from 'assets/productsList.svg';
+import bookmark from 'assets/bookmark.svg';
 
 function Dropdown() {
   return (
@@ -36,6 +36,7 @@ const DropdownWrapper = styled.nav`
   background-color: #ffffff;
   font-size: 16px;
   box-shadow: 0px 8px 8px 0px #0000001a;
+  z-index: 1;
 
   &::before {
     content: '';
@@ -60,13 +61,13 @@ const WelcomeText = styled.p`
 `;
 
 const LinkToProductsList = styled(Link)`
-  background: no-repeat url(${productsListIcon});
+  background: no-repeat url(${productsList});
   ${LINK_STYLE};
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 const LinkToBookmark = styled(Link)`
-  background: no-repeat url(${bookmarkIcon});
+  background: no-repeat url(${bookmark});
   ${LINK_STYLE};
   background-position: 24px 15px;
 `;
