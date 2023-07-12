@@ -11,7 +11,7 @@ function Header() {
     <ShadowWrapper>
       <HeaderWrapper>
         <Logo />
-        <DropdownButton setIsOpen={setIsOpen} />
+        <DropdownButton isOpen={isOpen} setIsOpen={setIsOpen} />
         {isOpen && <Dropdown />}
       </HeaderWrapper>
     </ShadowWrapper>

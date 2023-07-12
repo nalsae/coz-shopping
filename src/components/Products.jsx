@@ -13,9 +13,11 @@ function Products({ productsInfo }) {
 
 const ProductsWrapper = styled.ul`
   display: flex;
-  gap: 24px;
+  flex-flow: row wrap;
+  column-gap: 24px;
+  row-gap: 12px;
   width: 1128px;
-  margin: 0 auto;
+  margin: 0 auto 24px;
 `;
 
 export default Products;
