@@ -18,24 +18,33 @@ const productsReducer = (state = initialState, action) => {
       const targetIndex = state.products.findIndex(
         ({ id }) => id === payload.id
       );
-      const { products } = { ...state };
-      products[targetIndex].isBookmarked = !products[targetIndex].isBookmarked;
+      const newState = {
+        ...state,
+        products: state.products.map((product, index) =>
+          index === targetIndex ? { ...product, isBookmarked: true } : product
+        ),
+      };
 
       return {
-        ...state,
-        products,
-        bookmarked: [...state.bookmarked, products[targetIndex]],
+        ...newState,
+        bookmarked: [...state.bookmarked, newState.products[targetIndex]],
       };
     }
     case DELETE_BOOKMARK: {
-      const targetIndex = state.bookmarked.findIndex(
+      const targetIndex = state.products.findIndex(
         ({ id }) => id === payload.id
       );
+      const newState = {
+        ...state,
+        products: state.products.map((product, index) =>
+          index === targetIndex ? { ...product, isBookmarked: false } : product
+        ),
+      };
 
       return {
-        ...state,
+        ...newState,
         bookmarked: state.bookmarked.filter(
-          (_, index) => index !== targetIndex
+          ({ id }) => id !== newState.products[targetIndex].id
         ),
       };
     }
