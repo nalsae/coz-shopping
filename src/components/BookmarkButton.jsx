@@ -7,9 +7,8 @@ import { ReactComponent as UnfilledStar } from 'assets/unfilledStar.svg';
 function BookmarkButton({ id, isBookmarked }) {
   const dispatch = useDispatch();
 
-  const handleClick = () => {
+  const handleClick = () =>
     isBookmarked ? dispatch(deleteBookmark(id)) : dispatch(addBookmark(id));
-  };
 
   return (
     <ButtonWrapper

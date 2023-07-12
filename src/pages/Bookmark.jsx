@@ -19,6 +19,7 @@ function Bookmark() {
       <Filters
         currentFilter={currentFilter}
         setCurrentFilter={setCurrentFilter}
+        filterType="bookmark"
       />
       <Products productsInfo={filtered} />
     </main>
