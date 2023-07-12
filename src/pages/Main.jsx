@@ -1,12 +1,14 @@
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Products from 'components/Products';
+import Toasts from 'components/Toasts';
 import sliceProducts from 'utils/functions/sliceProducts';
 
 function Main() {
   const { products = [], bookmarked = [] } = useSelector(
     (state) => state.productsReducer
   );
+  const { toasts = [] } = useSelector((state) => state.toastsReducer);
 
   const allProducts = sliceProducts(products, 'all');
   const bookmarkedProducts = sliceProducts(bookmarked, 'bookmark');
@@ -25,6 +27,7 @@ function Main() {
           <NonExistMsg>즐겨찾기에 등록한 상품이 존재하지 않습니다.</NonExistMsg>
         )}
       </section>
+      <Toasts toasts={toasts} />
     </MainWrapper>
   );
 }

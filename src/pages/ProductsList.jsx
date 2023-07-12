@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Products from 'components/Products';
 import Filters from 'components/Filters';
+import Toasts from 'components/Toasts';
 import setInitialFilter from 'utils/functions/setInitialFilter';
 import filterProducts from 'utils/functions/filterProducts';
 
 function ProductsList() {
-  const { products } = useSelector((state) => state.productsReducer);
+  const { products = [] } = useSelector((state) => state.productsReducer);
+  const { toasts = [] } = useSelector((state) => state.toastsReducer);
   const [currentFilter, setCurrentFilter] = useState(
     setInitialFilter('productsFilter')
   );
@@ -22,6 +24,7 @@ function ProductsList() {
         filterType="products"
       />
       <Products productsInfo={filtered} />
+      <Toasts toasts={toasts} />
     </main>
   );
 }

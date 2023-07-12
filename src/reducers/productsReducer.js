@@ -1,4 +1,4 @@
-import { initialState } from './initialState';
+import { productsInitialState } from './initialState';
 import {
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_ERROR,
@@ -6,12 +6,12 @@ import {
   DELETE_BOOKMARK,
 } from 'actions/actions';
 
-const productsReducer = (state = initialState, action) => {
+const productsReducer = (state = productsInitialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
     case FETCH_PRODUCTS_SUCCESS:
-      return { ...state, products: payload, bookmarked: [] };
+      return { ...state, products: payload };
     case FETCH_PRODUCTS_ERROR:
       return { ...state, error: payload };
     case ADD_BOOKMARK: {

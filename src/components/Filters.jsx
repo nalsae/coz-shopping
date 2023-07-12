@@ -16,7 +16,7 @@ function Filters({ currentFilter, setCurrentFilter, filterType }) {
       {FILTER_INFO.map(({ type, name, imgUrl }) => (
         <Filter id={type} key={type} onClick={handleClick}>
           <img src={imgUrl} alt="" />
-          <FilterName type={type} currentFilter={currentFilter}>
+          <FilterName type={type} $currentFilter={currentFilter}>
             {name}
           </FilterName>
         </Filter>

@@ -18,17 +18,17 @@ function Dropdown() {
 const LINK_STYLE = css`
   display: flex;
   align-items: center;
-  width: 220px;
+  width: 200px;
   height: 50px;
-  padding-left: 52px;
-  background-position: 24px 15px;
+  padding-left: 54px;
+  background-position: 26px 15px;
 `;
 
 const DropdownWrapper = styled.nav`
   position: absolute;
   top: 70px;
-  right: -64px;
-  width: 220px;
+  right: -44px;
+  width: 200px;
   display: flex;
   flex-flow: column wrap;
   height: 150px;
@@ -69,7 +69,6 @@ const LinkToProductsList = styled(Link)`
 const LinkToBookmark = styled(Link)`
   background: no-repeat url(${bookmark});
   ${LINK_STYLE};
-  background-position: 24px 15px;
 `;
 
 export default Dropdown;
