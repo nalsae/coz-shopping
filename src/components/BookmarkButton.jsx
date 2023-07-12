@@ -1,14 +1,23 @@
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { addBookmark, deleteBookmark } from 'actions/actions';
+import {
+  addBookmark,
+  deleteBookmark,
+  pushToast,
+  shiftToast,
+} from 'actions/actions';
 import { ReactComponent as FilledStar } from 'assets/filledStar.svg';
 import { ReactComponent as UnfilledStar } from 'assets/unfilledStar.svg';
 
 function BookmarkButton({ id, isBookmarked }) {
   const dispatch = useDispatch();
 
-  const handleClick = () =>
+  const handleClick = () => {
     isBookmarked ? dispatch(deleteBookmark(id)) : dispatch(addBookmark(id));
+
+    dispatch(pushToast(isBookmarked));
+    setTimeout(() => dispatch(shiftToast()), 3000);
+  };
 
   return (
     <ButtonWrapper
