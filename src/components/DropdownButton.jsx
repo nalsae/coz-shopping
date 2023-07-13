@@ -8,8 +8,9 @@ function DropdownButton({ isOpen, setIsOpen }) {
     <HamburgerButton
       type="button"
       aria-label={isOpen ? '메뉴 닫기' : '메뉴 열기'}
+      onClick={handleClick}
     >
-      <Hamburger onClick={handleClick} />
+      <Hamburger />
     </HamburgerButton>
   );
 }
