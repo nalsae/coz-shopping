@@ -4,6 +4,8 @@ export const ADD_BOOKMARK = 'ADD_BOOKMARK';
 export const DELETE_BOOKMARK = 'DELETE_BOOKMARK';
 export const PUSH_TOAST = 'PUSH_TOAST';
 export const SHIFT_TOAST = 'SHIFT_TOAST';
+export const OPEN_MODAL = 'OPEN_MODAL';
+export const CLOSE_MODAL = 'CLOSE_MODAL';
 
 export const fetchProductsSuccess = (products) => ({
   type: FETCH_PRODUCTS_SUCCESS,
@@ -36,4 +38,13 @@ export const pushToast = (isBookmarked) => ({
 
 export const shiftToast = () => ({
   type: SHIFT_TOAST,
+});
+
+export const openModal = (id) => ({
+  type: OPEN_MODAL,
+  payload: { id },
+});
+
+export const closeModal = () => ({
+  type: CLOSE_MODAL,
 });
