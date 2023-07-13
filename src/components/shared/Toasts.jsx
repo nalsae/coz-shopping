@@ -1,7 +1,7 @@
 import uuid from 'react-uuid';
 import styled from 'styled-components';
-import filledStar from 'assets/filledStar.svg';
-import unfilledStar from 'assets/unfilledStar.svg';
+import filledStar from 'assets/icons/filledStar.svg';
+import unfilledStar from 'assets/icons/unfilledStar.svg';
 
 function Toasts({ toasts }) {
   return (

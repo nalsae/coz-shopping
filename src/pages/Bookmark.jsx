@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import Products from 'components/Products';
-import Filters from 'components/Filters';
-import Toasts from 'components/Toasts';
-import ModalPortal from 'components/ModalPortal';
-import ProductModal from 'components/ProductModal';
+import {
+  Products,
+  Filters,
+  Toasts,
+  ModalPortal,
+  ProductModal,
+} from 'components';
 import useInfiniteScroll from 'hooks/useInfiniteScroll';
-import setInitialFilter from 'utils/functions/setInitialFilter';
+import { FILTER_TYPE } from 'utils/constants';
+import { setInitialFilter } from 'utils/functions';
 
 function Bookmark() {
   const {
@@ -31,7 +34,7 @@ function Bookmark() {
       <Filters
         currentFilter={currentFilter}
         setCurrentFilter={setCurrentFilter}
-        filterType="bookmark"
+        filterType={FILTER_TYPE.bookmark}
       />
       <Products productsInfo={filtered} />
       {isLoading ? (

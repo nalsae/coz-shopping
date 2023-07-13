@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ReactComponent as LogoImg } from 'assets/logo.svg';
+import { ReactComponent as LogoImg } from 'assets/imgs/logo.svg';
 
 function Logo() {
   return (
