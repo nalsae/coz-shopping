@@ -2,12 +2,17 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Products from 'components/Products';
 import Toasts from 'components/Toasts';
+import ModalPortal from 'components/ModalPortal';
+import ProductModal from 'components/ProductModal';
 import sliceProducts from 'utils/functions/sliceProducts';
 
 function Main() {
-  const { products = [], bookmarked = [] } = useSelector(
-    (state) => state.productsReducer
-  );
+  const {
+    products = [],
+    bookmarked = [],
+    modalInfo = {},
+    isModalOpen,
+  } = useSelector((state) => state.productsReducer);
   const { toasts = [] } = useSelector((state) => state.toastsReducer);
 
   const allProducts = sliceProducts(products, 'all');
@@ -28,6 +33,11 @@ function Main() {
         )}
       </section>
       <Toasts toasts={toasts} />
+      {isModalOpen && (
+        <ModalPortal>
+          <ProductModal modalInfo={modalInfo} />
+        </ModalPortal>
+      )}
     </MainWrapper>
   );
 }
