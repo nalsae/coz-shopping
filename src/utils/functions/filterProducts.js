@@ -1,5 +1,5 @@
-const filterProducts = (products, currentFilter, isBookmarked) => {
-  if (isBookmarked) {
+const filterProducts = (products, currentFilter, isBookmarkPage) => {
+  if (isBookmarkPage) {
     const bookmarked = products.filter(({ isBookmarked }) => isBookmarked);
 
     return currentFilter === 'All'
