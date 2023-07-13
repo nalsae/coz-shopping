@@ -8,7 +8,7 @@ import {
   ProductModal,
 } from 'components';
 import useInfiniteScroll from 'hooks/useInfiniteScroll';
-import { FILTER_TYPE } from 'utils/constants';
+import { FILTER_TYPE, STORAGE_KEYS } from 'utils/constants';
 import { setInitialFilter } from 'utils/functions';
 
 function Bookmark() {
@@ -19,7 +19,7 @@ function Bookmark() {
   } = useSelector((state) => state.productsReducer);
   const { toasts = [] } = useSelector((state) => state.toastsReducer);
   const [currentFilter, setCurrentFilter] = useState(
-    setInitialFilter('bookmarkFilter')
+    setInitialFilter(STORAGE_KEYS.bookmark)
   );
 
   const { observerTarget, filtered, isLoading } = useInfiniteScroll(
