@@ -32,6 +32,7 @@ const ToastsWrapper = styled.div`
   flex-flow: column wrap;
   align-items: flex-end;
   gap: 12px;
+  z-index: 999;
 `;
 
 const ToastContainer = styled.div`
