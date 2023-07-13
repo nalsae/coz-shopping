@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import filterProducts from 'utils/functions/filterProducts';
+import { filterProducts } from 'utils/functions';
 
 function useInfiniteScroll(products, currentFilter, isBookmarkPage) {
   const [filtered, setFiltered] = useState(
