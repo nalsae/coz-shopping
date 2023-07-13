@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Products from 'components/Products';
@@ -15,8 +16,11 @@ function Main() {
   } = useSelector((state) => state.productsReducer);
   const { toasts = [] } = useSelector((state) => state.toastsReducer);
 
-  const allProducts = sliceProducts(products, 'all');
-  const bookmarkedProducts = sliceProducts(bookmarked, 'bookmark');
+  const allProducts = useMemo(() => sliceProducts(products, 'all'), [products]);
+  const bookmarkedProducts = useMemo(
+    () => sliceProducts(bookmarked, 'bookmark'),
+    [bookmarked]
+  );
 
   return (
     <MainWrapper>
