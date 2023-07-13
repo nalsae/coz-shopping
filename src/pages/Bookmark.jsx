@@ -5,8 +5,8 @@ import Filters from 'components/Filters';
 import Toasts from 'components/Toasts';
 import ModalPortal from 'components/ModalPortal';
 import ProductModal from 'components/ProductModal';
+import useInfiniteScroll from 'hooks/useInfiniteScroll';
 import setInitialFilter from 'utils/functions/setInitialFilter';
-import filterProducts from 'utils/functions/filterProducts';
 
 function Bookmark() {
   const {
@@ -19,7 +19,11 @@ function Bookmark() {
     setInitialFilter('bookmarkFilter')
   );
 
-  const filtered = filterProducts(products, currentFilter, true);
+  const { observerTarget, filtered, isLoading } = useInfiniteScroll(
+    products,
+    currentFilter,
+    true
+  );
 
   return (
     <main>
@@ -30,6 +34,11 @@ function Bookmark() {
         filterType="bookmark"
       />
       <Products productsInfo={filtered} />
+      {isLoading ? (
+        '로딩 중...'
+      ) : (
+        <div ref={observerTarget} style={{ height: '24px' }}></div>
+      )}
       <Toasts toasts={toasts} />
       {isModalOpen && (
         <ModalPortal>
