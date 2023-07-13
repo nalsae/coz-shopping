@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import Products from 'components/Products';
-import Filters from 'components/Filters';
-import Toasts from 'components/Toasts';
-import ModalPortal from 'components/ModalPortal';
-import ProductModal from 'components/ProductModal';
+import {
+  Products,
+  Filters,
+  Toasts,
+  ModalPortal,
+  ProductModal,
+} from 'components';
 import useInfiniteScroll from 'hooks/useInfiniteScroll';
-import setInitialFilter from 'utils/functions/setInitialFilter';
+import { FILTER_TYPE, STORAGE_KEYS } from 'utils/constants';
+import { setInitialFilter } from 'utils/functions';
 
 function ProductsList() {
   const {
@@ -16,7 +19,7 @@ function ProductsList() {
   } = useSelector((state) => state.productsReducer);
   const { toasts = [] } = useSelector((state) => state.toastsReducer);
   const [currentFilter, setCurrentFilter] = useState(
-    setInitialFilter('productsFilter')
+    setInitialFilter(STORAGE_KEYS.productsList)
   );
 
   const { observerTarget, filtered, isLoading } = useInfiniteScroll(
@@ -31,7 +34,7 @@ function ProductsList() {
       <Filters
         currentFilter={currentFilter}
         setCurrentFilter={setCurrentFilter}
-        filterType="products"
+        filterType={FILTER_TYPE.products}
       />
       <Products productsInfo={filtered} />
       {isLoading ? (

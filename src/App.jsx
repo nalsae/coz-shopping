@@ -1,9 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import Header from 'components/Header';
-import Main from 'pages/Main';
-import ProductsList from 'pages/ProductsList';
-import BookMark from 'pages/Bookmark';
-import Footer from 'components/Footer';
+import { Header, Footer } from 'components';
+import { Main, ProductsList, Bookmark } from 'pages';
 
 function App() {
   return (
@@ -12,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />}></Route>
         <Route path="/products/list" element={<ProductsList />}></Route>
-        <Route path="/bookmark" element={<BookMark />}></Route>
+        <Route path="/bookmark" element={<Bookmark />}></Route>
       </Routes>
       <Footer />
     </>

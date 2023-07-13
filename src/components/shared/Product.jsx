@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { openModal } from 'actions/actions';
 import styled from 'styled-components';
 import BookmarkButton from './BookmarkButton';
+import { PRODUCT_TYPES } from 'utils/constants';
 
 function Product({ productInfo }) {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function Product({ productInfo }) {
     follower,
     isBookmarked,
   } = productInfo;
+  const { brand, product, category, exhibition } = PRODUCT_TYPES;
 
   const handleClick = (e) => {
     if (e.target.closest('button')) return;
@@ -31,10 +33,10 @@ function Product({ productInfo }) {
       <ProductImg
         width="264px"
         height="210px"
-        src={type === 'Brand' ? brand_image_url : image_url}
+        src={type === brand ? brand_image_url : image_url}
         alt=""
       />
-      {type === 'Product' && (
+      {type === product && (
         <>
           <MainInfo>
             <h3>{title}</h3>
@@ -43,14 +45,14 @@ function Product({ productInfo }) {
           <SubInfo type={type}>{Number(price).toLocaleString()}원</SubInfo>
         </>
       )}
-      {type === 'Category' && (
+      {type === category && (
         <>
           <MainInfo>
             <h3># {title}</h3>
           </MainInfo>
         </>
       )}
-      {type === 'Exhibition' && (
+      {type === exhibition && (
         <>
           <MainInfo>
             <h3>{title}</h3>
@@ -58,7 +60,7 @@ function Product({ productInfo }) {
           <SubInfo type={type}>{sub_title}</SubInfo>
         </>
       )}
-      {type === 'Brand' && (
+      {type === brand && (
         <>
           <MainInfo>
             <h3>{brand_name}</h3>
@@ -100,7 +102,7 @@ const DiscountRate = styled.p`
 const SubInfo = styled.p`
   display: flex;
   justify-content: ${({ type }) =>
-    type === 'Exhibition' ? 'flex-start' : 'flex-end'};
+    type === PRODUCT_TYPES.exhibition ? 'flex-start' : 'flex-end'};
   align-items: center;
   height: 24px;
   font-weight: 300;

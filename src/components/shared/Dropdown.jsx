@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
-import productsList from 'assets/productsList.svg';
-import bookmark from 'assets/bookmark.svg';
+import styled from 'styled-components';
+import { LINK_STYLE } from 'styles/mixin';
+import productsList from 'assets/icons/productsList.svg';
+import bookmark from 'assets/icons/bookmark.svg';
 
 function Dropdown() {
   return (
@@ -14,15 +15,6 @@ function Dropdown() {
     </DropdownWrapper>
   );
 }
-
-const LINK_STYLE = css`
-  display: flex;
-  align-items: center;
-  width: 200px;
-  height: 50px;
-  padding-left: 54px;
-  background-position: 26px 15px;
-`;
 
 const DropdownWrapper = styled.nav`
   position: absolute;

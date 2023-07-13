@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { closeModal } from 'actions/actions';
 import styled from 'styled-components';
 import BookmarkButton from './BookmarkButton';
-import { ReactComponent as CloseIcon } from 'assets/closeIcon.svg';
+import { ReactComponent as CloseIcon } from 'assets/icons/closeIcon.svg';
 
 function ProductModal({ modalInfo }) {
   const dispatch = useDispatch();

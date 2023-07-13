@@ -6,8 +6,8 @@ import {
   shiftToast,
 } from 'actions/actions';
 import styled from 'styled-components';
-import { ReactComponent as FilledStar } from 'assets/filledStar.svg';
-import { ReactComponent as UnfilledStar } from 'assets/unfilledStar.svg';
+import { ReactComponent as FilledStar } from 'assets/icons/filledStar.svg';
+import { ReactComponent as UnfilledStar } from 'assets/icons/unfilledStar.svg';
 
 function BookmarkButton({ id, isBookmarked, isForModal = false }) {
   const dispatch = useDispatch();
