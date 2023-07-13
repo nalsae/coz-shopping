@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { SELECTED_FILTER_STYLE } from 'styles/mixin';
 import { FILTER_INFO, FILTER_TYPE, STORAGE_KEYS } from 'utils/constants';
 
 function Filters({ currentFilter, setCurrentFilter, filterType }) {
@@ -24,12 +25,6 @@ function Filters({ currentFilter, setCurrentFilter, filterType }) {
     </FiltersWrapper>
   );
 }
-
-const SELECTED_FILTER_STYLE = css`
-  font-weight: 800;
-  color: #412dd4;
-  border-bottom: 3px solid #412dd4;
-`;
 
 const FiltersWrapper = styled.ul`
   display: flex;
