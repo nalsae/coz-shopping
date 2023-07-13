@@ -1,5 +1,5 @@
-const setInitialFilter = (filterType) => {
-  const newFilter = localStorage.getItem(filterType);
+const setInitialFilter = (key) => {
+  const newFilter = localStorage.getItem(key);
 
   return newFilter ? newFilter : 'All';
 };
