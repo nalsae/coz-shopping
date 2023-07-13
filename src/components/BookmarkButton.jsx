@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import {
   addBookmark,
@@ -6,10 +5,11 @@ import {
   pushToast,
   shiftToast,
 } from 'actions/actions';
+import styled from 'styled-components';
 import { ReactComponent as FilledStar } from 'assets/filledStar.svg';
 import { ReactComponent as UnfilledStar } from 'assets/unfilledStar.svg';
 
-function BookmarkButton({ id, isBookmarked }) {
+function BookmarkButton({ id, isBookmarked, isForModal = false }) {
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -24,6 +24,7 @@ function BookmarkButton({ id, isBookmarked }) {
       type="button"
       aria-label={isBookmarked ? '즐겨찾기 해제' : '즐겨찾기 등록'}
       onClick={handleClick}
+      $isForModal={isForModal}
     >
       {isBookmarked ? <FilledStar /> : <UnfilledStar />}
     </ButtonWrapper>
@@ -31,7 +32,7 @@ function BookmarkButton({ id, isBookmarked }) {
 }
 
 const ButtonWrapper = styled.button`
-  position: absolute;
+  ${({ $isForModal }) => !$isForModal && 'position: absolute'};
   right: 12px;
   bottom: 66px;
   width: 24px;
