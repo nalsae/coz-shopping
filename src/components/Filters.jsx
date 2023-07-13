@@ -51,8 +51,8 @@ const Filter = styled.li`
 const FilterName = styled.p`
   height: 24px;
   line-height: 24px;
-  ${({ type, currentFilter }) =>
-    type === currentFilter && SELECTED_FILTER_STYLE}
+  ${({ type, $currentFilter }) =>
+    type === $currentFilter && SELECTED_FILTER_STYLE}
 `;
 
 export default Filters;

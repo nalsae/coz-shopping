@@ -1,7 +1,11 @@
+import { useDispatch } from 'react-redux';
+import { openModal } from 'actions/actions';
 import styled from 'styled-components';
 import BookmarkButton from './BookmarkButton';
 
 function Product({ productInfo }) {
+  const dispatch = useDispatch();
+
   const {
     id,
     type,
@@ -16,8 +20,14 @@ function Product({ productInfo }) {
     isBookmarked,
   } = productInfo;
 
+  const handleClick = (e) => {
+    if (e.target.closest('button')) return;
+
+    dispatch(openModal(e.target.closest('li').id));
+  };
+
   return (
-    <ProductWrapper>
+    <ProductWrapper id={id} onClick={handleClick}>
       <ProductImg
         width="264px"
         height="210px"
@@ -57,7 +67,7 @@ function Product({ productInfo }) {
           <SubInfo type={type}>{follower}</SubInfo>
         </>
       )}
-      <BookmarkButton id={id} isBookmarked={isBookmarked} />
+      <BookmarkButton id={id} isBookmarked={isBookmarked} isForModal={false} />
     </ProductWrapper>
   );
 }

@@ -4,6 +4,8 @@ import {
   FETCH_PRODUCTS_ERROR,
   ADD_BOOKMARK,
   DELETE_BOOKMARK,
+  OPEN_MODAL,
+  CLOSE_MODAL,
 } from 'actions/actions';
 
 const productsReducer = (state = productsInitialState, action) => {
@@ -48,6 +50,14 @@ const productsReducer = (state = productsInitialState, action) => {
         ),
       };
     }
+    case OPEN_MODAL:
+      return {
+        ...state,
+        modalInfo: state.products.find(({ id }) => id === +payload.id),
+        isModalOpen: true,
+      };
+    case CLOSE_MODAL:
+      return { ...state, modalInfo: {}, isModalOpen: false };
     default:
       return state;
   }
