@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { MODAL_VALUE } from 'styles/motionValues';
 import BookmarkButton from './BookmarkButton';
 import { ReactComponent as CloseIcon } from 'assets/icons/closeIcon.svg';
+import { PRODUCT_TYPES } from 'utils/constants';
 
 function ProductModal({ modalInfo }) {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ function ProductModal({ modalInfo }) {
     isBookmarked,
   } = modalInfo;
   const imgUrl = image_url || brand_image_url;
+  const { brand, product, category, exhibition } = PRODUCT_TYPES;
 
   const handleClick = () => dispatch(closeModal());
 
@@ -45,9 +47,9 @@ function ProductModal({ modalInfo }) {
             isForModal={true}
           />
           <p>
-            {type === 'Category' && `# ${title}`}
-            {type === 'Brand' && brand_name}
-            {(type === 'Product' || type === 'Exhibition') && title}
+            {type === category && `# ${title}`}
+            {type === brand && brand_name}
+            {(type === product || type === exhibition) && title}
           </p>
         </InfoWrapper>
         <CloseButton type="button" aria-label="닫기" onClick={handleClick}>
