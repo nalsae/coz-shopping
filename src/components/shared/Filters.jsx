@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import { SELECTED_FILTER_STYLE } from 'styles/mixin';
+import { HOVER_VALUE } from 'styles/motionValues';
 import { FILTER_INFO, FILTER_TYPE, STORAGE_KEYS } from 'utils/constants';
 
 function Filters({ currentFilter, setCurrentFilter, filterType }) {
@@ -15,7 +17,12 @@ function Filters({ currentFilter, setCurrentFilter, filterType }) {
   return (
     <FiltersWrapper>
       {FILTER_INFO.map(({ type, name, imgUrl }) => (
-        <Filter id={type} key={type} onClick={handleClick}>
+        <Filter
+          id={type}
+          key={type}
+          onClick={handleClick}
+          whileHover={HOVER_VALUE}
+        >
           <img src={imgUrl} alt="" />
           <FilterName type={type} $currentFilter={currentFilter}>
             {name}
@@ -35,7 +42,7 @@ const FiltersWrapper = styled.ul`
   margin: 24px auto 12px;
 `;
 
-const Filter = styled.li`
+const Filter = styled(motion.li)`
   display: flex;
   flex-flow: column wrap;
   align-items: center;

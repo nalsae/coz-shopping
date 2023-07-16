@@ -1,25 +1,30 @@
 import uuid from 'react-uuid';
 import styled from 'styled-components';
+import { motion, AnimatePresence } from 'framer-motion';
+import { OPACITY_VALUE } from 'styles/motionValues';
 import filledStar from 'assets/icons/filledStar.svg';
 import unfilledStar from 'assets/icons/unfilledStar.svg';
 
 function Toasts({ toasts }) {
   return (
     <ToastsWrapper>
-      {toasts.map((isBookmarked) => (
-        <ToastContainer
-          key={uuid()}
-          role="alert"
-          aria-live="assertive"
-          $isBookmarked={isBookmarked}
-        >
-          <ToastContent $isBookmarked={isBookmarked}>
-            {isBookmarked
-              ? '상품이 북마크에서 제거되었습니다.'
-              : '상품이 북마크에 추가되었습니다.'}
-          </ToastContent>
-        </ToastContainer>
-      ))}
+      <AnimatePresence>
+        {toasts.map((isBookmarked) => (
+          <ToastContainer
+            key={uuid()}
+            role="alert"
+            aria-live="assertive"
+            $isBookmarked={isBookmarked}
+            exit={OPACITY_VALUE.exit}
+          >
+            <ToastContent $isBookmarked={isBookmarked}>
+              {isBookmarked
+                ? '상품이 북마크에서 제거되었습니다.'
+                : '상품이 북마크에 추가되었습니다.'}
+            </ToastContent>
+          </ToastContainer>
+        ))}
+      </AnimatePresence>
     </ToastsWrapper>
   );
 }
@@ -35,7 +40,7 @@ const ToastsWrapper = styled.div`
   z-index: 999;
 `;
 
-const ToastContainer = styled.div`
+const ToastContainer = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;

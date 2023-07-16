@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { closeModal } from 'actions/actions';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import { MODAL_VALUE } from 'styles/motionValues';
 import BookmarkButton from './BookmarkButton';
 import { ReactComponent as CloseIcon } from 'assets/icons/closeIcon.svg';
 
@@ -30,7 +32,12 @@ function ProductModal({ modalInfo }) {
   return (
     <>
       <Background onClick={handleClick} />
-      <ModalWrapper $imgUrl={imgUrl}>
+      <ModalWrapper
+        $imgUrl={imgUrl}
+        initial={MODAL_VALUE.initial}
+        animate={MODAL_VALUE.animate}
+        transition={MODAL_VALUE.transition}
+      >
         <InfoWrapper $isBookmarked={isBookmarked}>
           <BookmarkButton
             id={id}
@@ -61,7 +68,7 @@ const Background = styled.div`
   z-index: 2;
 `;
 
-const ModalWrapper = styled.aside`
+const ModalWrapper = styled(motion.aside)`
   position: fixed;
   top: 50%;
   left: 50%;

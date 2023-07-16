@@ -1,6 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { openModal } from 'actions/actions';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import { HOVER_VALUE } from 'styles/motionValues';
 import BookmarkButton from './BookmarkButton';
 import { PRODUCT_TYPES } from 'utils/constants';
 
@@ -29,7 +31,7 @@ function Product({ productInfo }) {
   };
 
   return (
-    <ProductWrapper id={id} onClick={handleClick}>
+    <ProductWrapper id={id} onClick={handleClick} whileHover={HOVER_VALUE}>
       <ProductImg
         width="264px"
         height="210px"
@@ -74,11 +76,12 @@ function Product({ productInfo }) {
   );
 }
 
-const ProductWrapper = styled.li`
+const ProductWrapper = styled(motion.li)`
   position: relative;
   width: 264px;
   height: 264px;
   font-size: 16px;
+  cursor: pointer;
 `;
 
 const ProductImg = styled.img`
