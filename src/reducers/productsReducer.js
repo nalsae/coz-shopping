@@ -17,37 +17,45 @@ const productsReducer = (state = productsInitialState, action) => {
     case FETCH_PRODUCTS_ERROR:
       return { ...state, error: payload };
     case ADD_BOOKMARK: {
-      const targetIndex = state.products.findIndex(
-        ({ id }) => id === payload.id
-      );
+      const target = state.products.find(({ id }) => id === payload.id);
       const newState = {
         ...state,
-        products: state.products.map((product, index) =>
-          index === targetIndex ? { ...product, isBookmarked: true } : product
+        products: state.products.map((product) =>
+          product.id === target.id
+            ? { ...product, isBookmarked: true }
+            : product
         ),
       };
+      const modalInfo =
+        state.isModalOpen && state.modalInfo.id === target.id
+          ? { ...state.modalInfo, isBookmarked: true }
+          : state.modalInfo;
 
       return {
         ...newState,
-        bookmarked: [...state.bookmarked, newState.products[targetIndex]],
+        bookmarked: [...state.bookmarked, { ...target, isBookmarked: true }],
+        modalInfo,
       };
     }
     case DELETE_BOOKMARK: {
-      const targetIndex = state.products.findIndex(
-        ({ id }) => id === payload.id
-      );
+      const target = state.products.find(({ id }) => id === payload.id);
       const newState = {
         ...state,
-        products: state.products.map((product, index) =>
-          index === targetIndex ? { ...product, isBookmarked: false } : product
+        products: state.products.map((product) =>
+          product.id === target.id
+            ? { ...product, isBookmarked: false }
+            : product
         ),
       };
+      const modalInfo =
+        state.isModalOpen && state.modalInfo.id === target.id
+          ? { ...state.modalInfo, isBookmarked: false }
+          : state.modalInfo;
 
       return {
         ...newState,
-        bookmarked: state.bookmarked.filter(
-          ({ id }) => id !== newState.products[targetIndex].id
-        ),
+        bookmarked: state.bookmarked.filter(({ id }) => id !== target.id),
+        modalInfo,
       };
     }
     case OPEN_MODAL:
