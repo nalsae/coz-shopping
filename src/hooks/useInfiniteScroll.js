@@ -20,11 +20,15 @@ function useInfiniteScroll(products, currentFilter, isBookmarkPage) {
     }
 
     setIsLoading(false);
-  }, [currentPage, filtered]);
+  }, [currentPage]);
 
   useEffect(() => {
-    const filtered = filterProducts(products, currentFilter, isBookmarkPage);
+    const newFiltered = filterProducts(products, currentFilter, isBookmarkPage);
 
+    setFiltered(newFiltered.slice(0, filtered.length));
+  }, [products]);
+
+  useEffect(() => {
     setFiltered(filtered.slice(0, 12));
     setCurrentPage(1);
     setTotalPage(Math.ceil(filtered.length / 12));
