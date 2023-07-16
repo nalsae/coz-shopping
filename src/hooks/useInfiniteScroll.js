@@ -29,7 +29,9 @@ function useInfiniteScroll(products, currentFilter, isBookmarkPage) {
   }, [products]);
 
   useEffect(() => {
-    setFiltered(filtered.slice(0, 12));
+    const newFiltered = filterProducts(products, currentFilter, isBookmarkPage);
+
+    setFiltered(newFiltered.slice(0, 12));
     setCurrentPage(1);
     setTotalPage(Math.ceil(filtered.length / 12));
   }, [currentFilter]);
