@@ -1,12 +1,17 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import { LINK_STYLE } from 'styles/mixin';
+import { OPACITY_VALUE } from 'styles/motionValues';
 import productsList from 'assets/icons/productsList.svg';
 import bookmark from 'assets/icons/bookmark.svg';
 
 function Dropdown() {
   return (
-    <DropdownWrapper>
+    <DropdownWrapper
+      initial={OPACITY_VALUE.initial}
+      animate={OPACITY_VALUE.animate}
+    >
       <WelcomeText>김민석님, 안녕하세요!</WelcomeText>
       <LinkToProductsList to="/products/list">
         상품리스트 페이지
@@ -16,7 +21,7 @@ function Dropdown() {
   );
 }
 
-const DropdownWrapper = styled.nav`
+const DropdownWrapper = styled(motion.nav)`
   position: absolute;
   top: 70px;
   right: -44px;
