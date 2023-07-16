@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { OPACITY_VALUE } from 'styles/motionValues';
 import filledStar from 'assets/icons/filledStar.svg';
 import unfilledStar from 'assets/icons/unfilledStar.svg';
+import { TOAST_CONTENTS } from 'utils/constants';
 
 function Toasts({ toasts }) {
   return (
@@ -18,9 +19,7 @@ function Toasts({ toasts }) {
             exit={OPACITY_VALUE.exit}
           >
             <ToastContent $isBookmarked={isBookmarked}>
-              {isBookmarked
-                ? '상품이 북마크에서 제거되었습니다.'
-                : '상품이 북마크에 추가되었습니다.'}
+              {isBookmarked ? TOAST_CONTENTS.delete : TOAST_CONTENTS.add}
             </ToastContent>
           </ToastContainer>
         ))}
