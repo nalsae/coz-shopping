@@ -8,6 +8,7 @@ import {
 import styled from 'styled-components';
 import { ReactComponent as FilledStar } from 'assets/icons/filledStar.svg';
 import { ReactComponent as UnfilledStar } from 'assets/icons/unfilledStar.svg';
+import { ARIA_LABELS } from 'utils/constants';
 
 function BookmarkButton({ id, isBookmarked, isForModal = false }) {
   const dispatch = useDispatch();
@@ -19,10 +20,12 @@ function BookmarkButton({ id, isBookmarked, isForModal = false }) {
     setTimeout(() => dispatch(shiftToast()), 3000);
   };
 
+  const { bookmarkButton } = ARIA_LABELS;
+
   return (
     <ButtonWrapper
       type="button"
-      aria-label={isBookmarked ? '즐겨찾기 해제' : '즐겨찾기 등록'}
+      aria-label={isBookmarked ? bookmarkButton.delete : bookmarkButton.add}
       onClick={handleClick}
       $isForModal={isForModal}
     >
