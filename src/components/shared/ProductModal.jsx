@@ -7,6 +7,7 @@ import { MODAL_VALUE } from 'styles/motionValues';
 import BookmarkButton from './BookmarkButton';
 import { ReactComponent as CloseIcon } from 'assets/icons/closeIcon.svg';
 import { PRODUCT_TYPES } from 'utils/constants';
+import { ARIA_LABELS } from 'utils/constants';
 
 function ProductModal({ modalInfo }) {
   const dispatch = useDispatch();
@@ -52,7 +53,11 @@ function ProductModal({ modalInfo }) {
             {(type === product || type === exhibition) && title}
           </p>
         </InfoWrapper>
-        <CloseButton type="button" aria-label="닫기" onClick={handleClick}>
+        <CloseButton
+          type="button"
+          aria-label={ARIA_LABELS.modalCloseButton}
+          onClick={handleClick}
+        >
           <CloseIcon />
         </CloseButton>
       </ModalWrapper>
