@@ -14,7 +14,6 @@
 
 ## 📑 폴더 구조
 ```
-fe-sprint-my-agora-states-server
 fe-sprint-coz-shopping
 ├─ public
 │  └─ index.html
