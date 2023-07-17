@@ -1,6 +1,7 @@
 # 🎁 COZ Shopping
 > React로 구현한 커머스 쇼핑몰 사이트입니다.
 * 프로젝트 기간 : 2023.07.11 ~ 2023.07.17
+* 참여 인원 : 1명
 * [요구사항 명세서](https://codestates.notion.site/codestates/S4-05073c7f88a942c0ad5e5fcdd68c1dec)
 * [디자인 시안](https://www.figma.com/file/TfWAvMXegGEJiS3etqOSfs/FE-S4-project?node-id=0%3A1&t=cHu4rWaqJ0c5CTVV-1)
 
